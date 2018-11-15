@@ -80,5 +80,5 @@
 
 * ログイン情報取得APIにリクエストを送る
 
-> curl https://examin-app.herokuapp.com/api/auth
+> $ curl https://examin-app.herokuapp.com/api/auth
 
