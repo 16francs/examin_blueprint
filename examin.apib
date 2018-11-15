@@ -7,7 +7,6 @@ HOST: https://examin-app.herokuapp.com/api
 
 # Group 認証用 API
 ## Auth [/auth]
-
 ### ログイン情報取得 [GET]
 + Request (application/json)
 
@@ -20,7 +19,7 @@ HOST: https://examin-app.herokuapp.com/api
 		+ status: success
 
 + Response 401 (application/json)
-    + Attributes (ErrorUnauthorized)
+	+ Attributes (ErrorUnauthorized)
 
 ### ログイン [POST]
 + Request (application/json)
@@ -35,7 +34,7 @@ HOST: https://examin-app.herokuapp.com/api
 			+ role (number)
 
 + Response 401 (application/json)
-    + Attributes (ErrorUnauthorized)
+	+ Attributes (ErrorUnauthorized)
 
 ### ログアウト [DELETE]
 + Request (application/json)
@@ -49,9 +48,148 @@ HOST: https://examin-app.herokuapp.com/api
 		+ status: success
 
 + Response 401 (application/json)
-    + Attributes (ErrorUnauthorized)
+	+ Attributes (ErrorUnauthorized)
 
 # Group Teacher API
+## Student [/teachers/students]
+### 生徒一覧取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+### 生徒作成API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes (UserForm)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+		+ status: success
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)
+
+## Student [/teachers/students/{id}]
+### 生徒詳細取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+
+## Teacher [/teachers/teachers]
+### 講師一覧取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+### 講師作成API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes (UserForm)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+		+ status: success
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)
+
+## Teacher [/teachers/teachers/{id}/edit]
+### 講師編集取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+## Teacher [/teachers/teachers/{id}]
+### 講師詳細取得API [GET]
++ Request (applicaion/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+### 講師編集API [PUT]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes (UserForm)
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+		+ status: success
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)
 
 # Group Student API
 
@@ -75,16 +213,31 @@ HOST: https://examin-app.herokuapp.com/api
 + message: unauthorized
 
 ## LoginForm
-+ login_id: login_id (string, required) - ログインID
++ `login_id`: `login_id` (string, required) - ログインID
 + password: password (string, required) - パスワード
 
 ## AuthUser
 + user
 	+ id: 1 (number) - ユーザID
-	+ login_id: login_id (string) - ログインID
+	+ `login_id`: `login_id` (string) - ログインID
 	+ name: name (string) - 名前
 	+ school: school (string) - 塾名
 	+ role: 1 (number) - 権限
 + api_key
-	+ access_token: access_token (string) - アクセストークン
-	+ expires_at: `2018-01-01 00:00:00` - トークン有効期限
+	+ `access_token`: `access_token` (string) - アクセストークン
+	+ `expires_at`: `2018-01-01 00:00:00` - トークン有効期限
+
+## User
++ user
+	+ id: 1 (number) - ユーザID
+	+ `login_id`: `login_id` (string) - ログインID
+	+ name: name (string) - 名前
+	+ school: school (string) - 塾名
+	+ role: 1 (number) - 権限
+
+## UserForm
++ user
+	+ `login_id`: `login_id` (string, required) - ログインID
+	+ name: name (string, required) - 名前
+	+ school: school (string, required) - 塾名
+
