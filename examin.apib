@@ -1,0 +1,90 @@
+FORMAT: 1A
+HOST: https://examin-app.herokuapp.com/api
+
+# Examin WebAPIドキュメント
+
+# Group API 共通のエラー形式
+
+# Group 認証用 API
+## Auth [/auth]
+
+### ログイン情報取得 [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Response 200 (application/json)
+	+ Attributes (AuthUser)
+		+ status: success
+
++ Response 401 (application/json)
+    + Attributes (ErrorUnauthorized)
+
+### ログイン [POST]
++ Request (application/json)
+	+ Attribute (LoginForm)
+
++ Response 200 (application/json)
+	+ Attributes
+		+ status: success
+		+ access_token: 認証に使用するアクセストークン (string)
+		+ user
+			+ id (number)
+			+ role (number)
+
++ Response 401 (application/json)
+    + Attributes (ErrorUnauthorized)
+
+### ログアウト [DELETE]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Response 200 (application/json)
+	+ Attributes
+		+ status: success
+
++ Response 401 (application/json)
+    + Attributes (ErrorUnauthorized)
+
+# Group Teacher API
+
+# Group Student API
+
+# Data Structure
+
+## ErrorForBidden
++ status: error
++ message: forbidden
+
+## ErrorNotFound
++ status: error
++ message: not_found
+
+## ErrorRecordInvalid
++ status: error
++ message: record_invalid
++ data: モデルのエラー内容
+
+## ErrorUnauthorized
++ status: error
++ message: unauthorized
+
+## LoginForm
++ login_id: login_id (string, required) - ログインID
++ password: password (string, required) - パスワード
+
+## AuthUser
++ user
+	+ id: 1 (number) - ユーザID
+	+ login_id: login_id (string) - ログインID
+	+ name: name (string) - 名前
+	+ school: school (string) - 塾名
+	+ role: 1 (number) - 権限
++ api_key
+	+ access_token: access_token (string) - アクセストークン
+	+ expires_at: `2018-01-01 00:00:00` - トークン有効期限
