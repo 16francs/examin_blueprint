@@ -1,0 +1,89 @@
+## Problem [/teachers/problems]
+### 問題集一覧取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Response 200 (application/json)
+	+ Attributes (Problem)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+### 問題集作成API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes (ProblemForm)
+
++ Response 200 (application/json)
+	+ Attributes (Problem)
+		+ status: success
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)
+
+## Problem [/teachers/problems/{id}/edit]
+### 問題集編集取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (Problem)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+## Problem [/teachers/problems/{id}]
+### 問題集詳細取得API [GET]
++ Request (applicaion/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (Problem)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+### 問題集編集API [PUT]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes (ProblemForm)
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (Problem)
+		+ status: success
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)
+

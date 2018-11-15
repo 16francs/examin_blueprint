@@ -1,0 +1,88 @@
+## Teacher [/teachers/teachers]
+### 講師一覧取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+### 講師作成API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes (UserForm)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+		+ status: success
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)
+
+## Teacher [/teachers/teachers/{id}/edit]
+### 講師編集取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+## Teacher [/teachers/teachers/{id}]
+### 講師詳細取得API [GET]
++ Request (applicaion/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+### 講師編集API [PUT]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes (UserForm)
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+		+ status: success
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)

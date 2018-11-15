@@ -1,0 +1,16 @@
+## ErrorForBidden
++ status: error
++ message: forbidden
+
+## ErrorNotFound
++ status: error
++ message: not_found
+
+## ErrorRecordInvalid
++ status: error
++ message: record_invalid
++ data: モデルのエラー内容
+
+## ErrorUnauthorized
++ status: error
++ message: unauthorized
