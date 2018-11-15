@@ -51,7 +51,7 @@
 
 * 以下のコマンドを実行して起動する
 
-> $ aglio -i examin.apib -o examin.html
+> $ aglio -i examin.md -o examin.html
 
 
 * 上記コマンドを実行後, ```examin.html``` を開くとHTML形式で閲覧できる
@@ -60,9 +60,25 @@
 
 * 以下のコマンドを実行して起動する
 
-> $ aglio -i examin.apib --server
+> $ aglio -i examin.md --server
 
-* 表示されるURLにアクセス(デフォルトの場合，以下のリンクにアクセス)
+* 表示されるURLにアクセス(ポートを指定していない場合，以下のリンクにアクセス)
 
 > http://localhost:3000
+
+## 実際に動作する様子をみたい場合
+
+* ```api-modk```をインストール
+
+> $ npm install -g api-mock
+
+* 下記のコマンドを実行し, モックサーバを起動する
+
+> $ api-mock examin.md
+
+(実行例)
+
+* ログイン情報取得APIにリクエストを送る
+
+> curl https://examin-app.herokuapp.com/api/auth
 
