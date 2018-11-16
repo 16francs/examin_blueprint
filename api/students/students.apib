@@ -1,0 +1,58 @@
+## Student [/students/students/{id}/edit]
+### 生徒編集取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+## Student [/student/students/{id}]
+### 生徒詳細取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 404 (application/json)
+	+ Attributes (ErrorNotFound)
+
+### 生徒編集API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes (UserForm)
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (User)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)
+	
