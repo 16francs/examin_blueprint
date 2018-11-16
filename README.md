@@ -51,7 +51,7 @@
 
 * 以下のコマンドを実行して起動する
 
-> $ aglio -i examin.md -o examin.html
+> $ aglio -i examin.apib -o examin.html
 
 
 * 上記コマンドを実行後, ```examin.html``` を開くとHTML形式で閲覧できる
@@ -60,7 +60,7 @@
 
 * 以下のコマンドを実行して起動する
 
-> $ aglio -i examin.md --server
+> $ aglio -i examin.apib --server
 
 * 表示されるURLにアクセス(ポートを指定していない場合，以下のリンクにアクセス)
 
@@ -74,7 +74,7 @@
 
 * 下記のコマンドを実行し, モックサーバを起動する
 
-> $ api-mock examin.md
+> $ api-mock examin.apib
 
 (実行例)
 
