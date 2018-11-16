@@ -7,7 +7,7 @@
 			access-token: 認証用のアクセストークン
 
 + Response 200 (application/json)
-	+ Attributes (Problem)
+	+ Attributes (Problems)
 
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
@@ -48,6 +48,9 @@
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
 
++ Response 404 (application/json)
+	+ Attributes (ErrorNotFound)
+
 ## Problem [/teachers/problems/{id}]
 ### 問題集詳細取得API [GET]
 + Request (applicaion/json)
@@ -64,6 +67,9 @@
 
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
+
++ Response 404 (application/json)
+	+ Attributes (ErrorNotFound)
 
 ### 問題集編集API [PUT]
 + Request (application/json)
@@ -83,6 +89,9 @@
 
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
+
++ Response 404 (application/json)
+	+ Attributes (ErrorNotFound)
 
 + Response 422 (application/json)
 	+ Attributes (ErrorRecordInvalid)

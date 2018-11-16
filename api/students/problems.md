@@ -1,5 +1,5 @@
-## Student [/teachers/students]
-### 生徒一覧取得API [GET]
+## Problem [/students/problems]
+### 問題集一覧取得API [GET]
 + Request (application/json)
 
 	+ Headers
@@ -7,23 +7,7 @@
 			access-token: 認証用のアクセストークン
 
 + Response 200 (application/json)
-	+ Attributes (Users)
-
-+ Response 401 (application/json)
-	+ Attributes (ErrorUnauthorized)
-
-### 生徒作成API [POST]
-+ Request (application/json)
-
-	+ Headers
-
-			access-token: 認証用のアクセストークン
-
-	+ Attributes (UserForm)
-
-+ Response 200 (application/json)
-	+ Attributes (User)
-		+ status: success
+	+ Attributes (Problems)
 
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
@@ -31,8 +15,8 @@
 + Response 422 (application/json)
 	+ Attributes (ErrorRecordInvalid)
 
-## Student [/teachers/students/{id}]
-### 生徒詳細取得API [GET]
+## Problem [/students/problems/{id}]
+### 問題集詳細取得API [GET]
 + Request (application/json)
 
 	+ Headers
@@ -43,7 +27,10 @@
 	+ id: 1 (number)
 
 + Response 200 (application/json)
-	+ Attributes (User)
+	+ Attributes (Problem)
 
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
+
++ Response 404 (application/json)
+	+ Attributes (ErrorNotFound)

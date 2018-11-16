@@ -19,7 +19,8 @@ HOST: https://examin-app.herokuapp.com/api
 # Group Teachers / Teachers API
 <!-- include(api/teachers/teachers.md) -->
 
-# Group Students API
+# Group Students / Problems API
+<!-- include(api/students/problems.md) -->
 
 # Data Structure
 <!-- include(data/errors.md) -->

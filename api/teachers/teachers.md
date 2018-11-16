@@ -7,7 +7,7 @@
 			access-token: 認証用のアクセストークン
 
 + Response 200 (application/json)
-	+ Attributes (User)
+	+ Attributes (Users)
 
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)

@@ -18,7 +18,11 @@
 	+ role: 1 (number) - 権限
 	+ `created_at`: `2018-01-01 00:00:00` (string) - 登録日時
 	+ `updated_at`: `2018-01-01 00:00:00` (string) - 更新日時
-	
+
+## Users
++ users (array)
+	+ (User)
+
 ## LoginForm
 + `login_id`: `login_id` (string, required) - ログインID
 + password: password (string, required) - パスワード
