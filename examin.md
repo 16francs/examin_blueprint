@@ -23,4 +23,6 @@ HOST: https://examin-app.herokuapp.com/api
 
 # Data Structure
 <!-- include(data/errors.md) -->
-<!-- include(data/models/index.md) -->
+
+<!-- include(data/models/problem.md) -->
+<!-- include(data/models/user.md) -->
