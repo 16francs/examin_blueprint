@@ -3,7 +3,11 @@ HOST: https://examin-app.herokuapp.com/api
 
 # Examin WebAPIドキュメント
 
-# Group API 共通のエラー形式
+# Group Overview
+## Examin WebAPI について
+<!-- include(overview/index.md) -->
+## API共通のエラー形式
+<!-- include(overview/errors.md) -->
 
 # Group 認証用 API
 <!-- include(api/auth.md) -->
