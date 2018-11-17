@@ -1,0 +1,20 @@
+## Question [/students/problems/{problem_id}/questions]
+### 問題一覧取得API [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ problem_id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (Questions)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 404 (application/json)
+	+ Attributes (ErrorNotFound)
+
