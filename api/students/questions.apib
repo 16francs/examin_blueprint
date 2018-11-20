@@ -18,3 +18,26 @@
 + Response 404 (application/json)
 	+ Attributes (ErrorNotFound)
 
+## Question [/students/problems/{problem_id}/questions/random]
+### 問題一覧(ランダム)取得API [GET]
++ Request (applicaiton/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes
+		+ count: 1 (number) - 取得問題数
+
++ Parameters
+	+ problem_id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (Questions)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 404 (application/json)
+	+ Attributes (ErrorNotFound)
+
