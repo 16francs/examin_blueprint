@@ -15,9 +15,6 @@
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
 
-+ Response 404 (application/json)
-	+ Attributes (ErrorNotFound)
-
 ## Question [/students/problems/{problem_id}/questions/random]
 ### 問題一覧(ランダム)取得API [GET]
 + Request (applicaiton/json)
@@ -38,6 +35,6 @@
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
 
-+ Response 404 (application/json)
-	+ Attributes (ErrorNotFound)
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)
 
