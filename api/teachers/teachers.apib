@@ -1,3 +1,42 @@
+## Teacher [/teachers/teachers/check_unique]
+### ユニーク制約用API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes
+		+ `login_id`: `login_id` (string) - ログインID
+
++ Response 200 (application/json)
+	+ Attributes
+		+ `check_unique`: true (boolean) - ユニーク制約
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+## Teacher [/teachers/teachers/{id}/check_unique]
+### ユニーク制約用API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes
+		+ `login_id`: `login_id` (string) - ログインID
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes
+		+ `check_unique`: true (boolean) - ユニーク制約
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
 ## Teacher [/teachers/teachers]
 ### 講師一覧取得API [GET]
 + Request (application/json)

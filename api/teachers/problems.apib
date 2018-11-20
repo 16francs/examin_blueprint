@@ -1,3 +1,42 @@
+## Problem [/teachers/problems/check_unique]
+### ユニーク制約用API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes
+		+ title: title (string) - タイトル
+
++ Response 200 (application/json)
+	+ Attributes
+		+ check_unique: true (boolean) - ユニーク制約
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+## Problem [/teachers/problems/{id}/check_unique]
+### ユニーク制約用API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes
+		+ title: title (string) - タイトル
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes
+		+ check_unique: true (boolean) - ユニーク制約
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
 ## Problem [/teachers/problems]
 ### 問題集一覧取得API [GET]
 + Request (application/json)
