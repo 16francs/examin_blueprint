@@ -36,3 +36,25 @@
 
 + Response 404 (application/json)
 	+ Attributes (ErrorNotFound)
+
+## Problem [/students/problems/{id}/achievement]
+### テスト結果登録API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes (ProblemsUser)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 422 (application/json)
+	+ Attributes (ErrorRecordInvalid)
+
+

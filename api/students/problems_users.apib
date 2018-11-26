@@ -1,4 +1,4 @@
-## Achievement [/students/achievements]
+## ProblemsUser [/students/problems_users]
 ### 成績一覧取得API [GET]
 + Request (application/json)
 
@@ -15,7 +15,7 @@
 + Response 422 (application/json)
 	+ Attributes (ErrorRecordInvalid)
 
-## Achievement [/students/achievements/{id}]
+## ProblemsUser [/students/problems_users/{id}]
 ### 成績詳細取得API [GET]
 + Request (application/json)
 
@@ -33,30 +33,4 @@
 
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
-
-## Achievement [/students/problem/{problem_id}/achievements]
-### テスト結果登録API [POST]
-+ Request (application/json)
-
-	+ Headers
-
-			access-token: 認証用のアクセストークン
-
-	+ Attributes
-		+ problems_user
-			+ achievements_attributes (array)
-				+ (AchievementForm)
-				+ (AchievementForm)
-
-+ Parameters
-	+ problem_id: 1 (number)
-
-+ Response 200 (application/json)
-	+ Attributes (ProblemsUser)
-
-+ Response 401 (application/json)
-	+ Attributes (ErrorUnauthorized)
-
-+ Response 422 (application/json)
-	+ Attributes (ErrorRecordInvalid)
 
