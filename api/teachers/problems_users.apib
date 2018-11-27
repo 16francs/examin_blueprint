@@ -1,16 +1,68 @@
 ## ProblemsUser [/teachers/problems_users]
 ### 成績一覧取得API [GET]
++ Request (appliction/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
 + Response 200 (application/json)
+	+ Attributes (ProblemsUsers)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
 
 ## ProblemsUser [/teachers/problems_users/problems/{id}]
-### 成績一覧(問題)取得API [GET]
+### 成績一覧(問題)取得API(未実装) [GET]
++ Request (appliction/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
 + Response 200 (application/json)
+	+ Attributes (ProblemsUser)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
 
 ## ProblemsUser [/teachers/problems_users/students/{id}]
-### 成績一覧(生徒)取得API [GET]
+### 成績一覧(生徒)取得API(未実装) [GET]
++ Request (appliction/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
 + Response 200 (application/json)
+	+ Attributes (ProblemsUser)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
 
 ## ProblemsUser [/teachers/problems_users/{id}]
 ### 成績詳細取得API [GET]
++ Request (appliction/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Parameters
+	+ id: 1 (number)
+
 + Response 200 (application/json)
+	+ Attributes (ProblemsUser)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 404 (application/json)
+	+ Attributes (ErrorNotFound)
 
