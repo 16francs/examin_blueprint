@@ -16,6 +16,27 @@
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
 
+## User [/users/{id}/check_unique]
+### ユニーク制約用API [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes
+		+ `login_id`: `login_id` (string) - ログインID
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes
+		+ `check_unique`: true (boolean)
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
 ## User [/user]
 ### ユーザー情報編集 [PUT]
 + Request (application/json)
