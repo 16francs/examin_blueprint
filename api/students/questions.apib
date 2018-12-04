@@ -17,6 +17,28 @@
 
 ## Question [/students/problems/{problem_id}/questions/random]
 ### 問題一覧(ランダム)取得API [GET]
+
+ここに表示する Request, Response は，問題形式が文字列入力の場合のものである．     
+問題形式が択一選択の場合，Response の形が以下のように変わる
+
+```
+[
+	{
+		"sentence": "問題文1",
+		"type": 1,
+		"correct": 1, - 正解の番号
+		"answers": ["解答1", "解答2", "解答3", "解答4"] - 選択肢
+	},
+	{
+		"sentence": "問題文1",
+		"type": 1,
+		"correct": "解答"
+		"correct": 1, - 正解の番号
+		"answers": ["解答1", "解答2", "解答3", "解答4"] - 選択肢
+	}
+]
+```
+
 + Request (applicaiton/json)
 
 	+ Headers
