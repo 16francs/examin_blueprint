@@ -17,28 +17,6 @@
 
 ## Question [/students/problems/{problem_id}/questions/random]
 ### 問題一覧(ランダム)取得API [GET]
-
-問題形式が択一選択方式の場合，4択の選択肢が以下の形式で返される
-なお，択一選択方式の正解は，correct に記される値と, 配列の index が対応するものとする
-
-```
-[
-	{
-		"sentence": "問題文1",
-		"type": 1,
-		"correct": 1, - 正解の番号
-		"answers": ["解答1", "解答2", "解答3", "解答4"] - 選択肢
-	},
-	{
-		"sentence": "問題文1",
-		"type": 1,
-		"correct": "解答"
-		"correct": 1, - 正解の番号
-		"answers": ["解答1", "解答2", "解答3", "解答4"] - 選択肢
-	}
-]
-```
-
 + Request (applicaiton/json)
 
 	+ Headers
@@ -47,12 +25,13 @@
 
 	+ Attributes
 		+ count: 1 (number) - 取得問題数
+		+ test_type: 1 (number) - テスト形式
 
 + Parameters
 	+ problem_id: 1 (number)
 
 + Response 200 (application/json)
-	+ Attributes (Questions)
+	+ Attributes (RandomQuestions)
 
 + Response 401 (application/json)
 	+ Attributes (ErrorUnauthorized)
