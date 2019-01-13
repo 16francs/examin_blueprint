@@ -97,3 +97,42 @@
 + Response 422 (application/json)
 	+ Attributes (ErrorRecordInvalid)
 
+## Problem [/teachers/problems/download]
+### 問題一括登録テンプレートダウンロード [GET]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
++ Response 200 (application/json)
+	+ Attributes
+		+ status: success
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
+## Problem [/teachers/problems/{id}/upload]
+### 問題一括登録テンプレートアップロード [POST]
++ Request (application/json)
+
+	+ Headers
+
+			access-token: 認証用のアクセストークン
+
+	+ Attributes
+			file: file (string) - テンプレートファイル
+
++ Parameters
+	+ id: 1 (number)
+
++ Response 200 (application/json)
+	+ Attributes
+		+ status: success
+
++ Response 401 (application/json)
+	+ Attributes (ErrorUnauthorized)
+
++ Response 404 (application/json)
+	+ Attributes (ErrorNotFound)
+
