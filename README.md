@@ -1,8 +1,10 @@
 # Examin (仕様書)
 
-[仕様書: API Blueprint](https://github.com/nishikawatadashi/examin_blueprint)     
-[フロントエンド: Vue.js](https://github.com/nishikawatadashi/examin_vue)     
-[バックエンド: Rails API](https://github.com/nishikawatadashi/examin)     
+[仕様書: API Blueprint](https://github.com/16francs/examin_blueprint)     
+[フロントエンド: Nuxt.js](https://github.com/16francs/examin_vue)     
+[バックエンド(今はこれ使ってる): Rails API](https://github.com/16francs/examin_rails)   
+[バックエンド: Golang API](https://github.com/16francs/examin_go)   
+[バックエンド: SpringBoot API](https://github.com/16francs/examin_boot)    
 
 ## 導入方法
 
