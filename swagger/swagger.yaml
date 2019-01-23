@@ -1,0 +1,99 @@
+swagger: '2.0'
+info:
+  description: examin API 設計
+  version: 0.0.1
+  title: examin
+
+schemes:
+  - https
+host: 'examin-api.herokuapp.com'
+basePath: /api
+
+produces:
+  - application/json
+
+paths:
+  /auth:
+    post:
+      tags:
+        - 認証用API
+      summary: ログイン認証用API
+      parameters:
+        - in: body
+          name: auth
+          schema:
+            type: object
+            properties:
+              login_id:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: OK
+        401:
+          $ref: '#/responses/UnAuthorized'
+    get:
+      tags:
+        - 認証用API
+      summary: 認証情報取得API
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Auth'
+        401:
+          $ref: '#/responses/UnAuthorized'
+
+parameters:
+  AuthorizationParam:
+    in: header
+    name: access-token
+    description: 実行時に返ってくる値 or Cookie に入っている値
+    type: string
+    required: true
+
+responses:
+  BadRequest:
+    description: 不正なパラメータが入力されています．
+    schema:
+      $ref: '#/definitions/Error'
+  UnAuthorized:
+    description: 認証エラーです．
+    schema:
+      $ref: '#/definitions/Error'
+  Forbidden:
+    description: 認証エラーです．
+    schema:
+      $ref: '#/definitions/Error'
+  NotFound:
+    description: ページが存在しません．
+    schema:
+      $ref: '#/definitions/Error'
+  ServerError:
+    description: サーバーエラーです．
+    schema:
+      $ref: '#/definitions/Error'
+
+definitions:
+  Auth:
+    type: object
+    properties:
+      access_token:
+        type: string
+      user:
+        type: object
+        properties:
+          id:
+            type: integer
+          role:
+            type: integer
+  Error:
+    type: object
+    properties:
+      status:
+        type: integer
+      description:
+        type: string
