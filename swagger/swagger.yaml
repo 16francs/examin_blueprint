@@ -3,15 +3,12 @@ info:
   description: examin API 設計
   version: 0.0.1
   title: examin
-
 schemes:
   - https
-host: 'examin-api.herokuapp.com'
+host: examin-api.herokuapp.com
 basePath: /api
-
 produces:
   - application/json
-
 paths:
   /auth:
     post:
@@ -29,9 +26,9 @@ paths:
               password:
                 type: string
       responses:
-        200:
+        '200':
           description: OK
-        401:
+        '401':
           $ref: '#/responses/UnAuthorized'
     get:
       tags:
@@ -40,13 +37,94 @@ paths:
       parameters:
         - $ref: '#/parameters/AuthorizationParam'
       responses:
-        200:
+        '200':
           description: OK
           schema:
             $ref: '#/definitions/Auth'
-        401:
+        '401':
           $ref: '#/responses/UnAuthorized'
-
+    delete:
+      tags: 
+        - 認証用API
+      summary: ログアウト用API
+      parameters:
+         - $ref: '#/parameters/AuthorizationParam'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: 'object'
+            properties:
+              status:
+                type: 'string'
+                example: 'success'
+        '401':
+          $ref: '#/responses/UnAuthorized'
+  /users:
+    put:
+      tags:
+      - 共通API
+      summary: ユーザー情報編集
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+        - name: user
+          in: body
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Unique'
+        '401':
+           $ref: '#/responses/UnAuthorized'
+        
+      
+  /users/check_unique: 
+      post:
+        tags:
+          -  共通API
+        summary: ユニーク制約用API
+        parameters:
+          - $ref: '#/parameters/AuthorizationParam'
+        responses:
+          '200': 
+            description: OK
+            schema:
+             $ref: '#/definitions/Unique'
+          '422':
+            $ref: '#/responses/RecordInvalid'
+  /teachers/problems:
+    get:
+      tags: 
+      - Teachers / Problems API
+      summary: 問題集一覧取得API
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+      responses:
+        '200':
+          description: OK
+          schema:
+             $ref: '#/definitions/Problems'
+        '401':
+          $ref: '#/responses/UnAuthorized'  
+    post:
+      tags: 
+      - Teachers / Problems API
+      summary: 問題集一覧取得API
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+        - name: problem
+          in: body
+          schema:
+           $ref: '#/definitions/Problem'
+      responses:
+        '200':
+          description: OK
+          schema:
+             $ref: '#/definitions/Problems'
+        '401':
+          $ref: '#/responses/UnAuthorized'  
 parameters:
   AuthorizationParam:
     in: header
@@ -54,29 +132,31 @@ parameters:
     description: 実行時に返ってくる値 or Cookie に入っている値
     type: string
     required: true
-
 responses:
   BadRequest:
     description: 不正なパラメータが入力されています．
     schema:
       $ref: '#/definitions/Error'
   UnAuthorized:
-    description: 認証エラーです．
+    description: unauthorized
     schema:
       $ref: '#/definitions/Error'
   Forbidden:
-    description: 認証エラーです．
+    description: forbidden
     schema:
       $ref: '#/definitions/Error'
   NotFound:
-    description: ページが存在しません．
+    description: not_found
+    schema:
+      $ref: '#/definitions/Error'
+  RecordInvalid:
+    description: record_invalid
     schema:
       $ref: '#/definitions/Error'
   ServerError:
-    description: サーバーエラーです．
+    description: internal_server_error  
     schema:
       $ref: '#/definitions/Error'
-
 definitions:
   Auth:
     type: object
@@ -97,3 +177,64 @@ definitions:
         type: integer
       description:
         type: string
+  Unique:
+    type: object
+    properties:
+      check_unique:
+        type: boolean
+        example: true
+  User: 
+    type: object
+    properties: 
+      login_id: 
+        type: string
+      name:
+        type: string
+      school:
+        type: string
+  
+  Achievement:
+    type: object
+    properties:
+      id:
+        type: integer
+      problems_user_id:
+        type: integer
+      question_id:
+        type: integer
+      result:
+        type: boolean
+      user_choice:
+        type: integer
+      answer_time:
+        type: integer
+      created_at: 
+        type: string
+        example: '2018-01-01 00:00:00'
+      updated_at:
+        type: string
+        example: '2018-01-01 00:00:00'
+  Problem:
+    type: object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      content:
+        type: string
+      created_at: 
+        type: string
+        example: '2018-01-01 00:00:00'
+      updated_at:
+        type: string
+        example: '2018-01-01 00:00:00'
+  Achievements:
+    type: array
+    items:
+      $ref: '#/definitions/Achievement'
+  Problems:
+    type: array
+    items:
+      $ref: '#/definitions/Problem'
+        
