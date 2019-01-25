@@ -28,6 +28,8 @@ paths:
       responses:
         '200':
           description: OK
+          schema:
+            $ref: '#/definitions/Auth'
         '401':
           $ref: '#/responses/UnAuthorized'
     get:
@@ -44,26 +46,26 @@ paths:
         '401':
           $ref: '#/responses/UnAuthorized'
     delete:
-      tags: 
+      tags:
         - 認証用API
       summary: ログアウト用API
       parameters:
-         - $ref: '#/parameters/AuthorizationParam'
+        - $ref: '#/parameters/AuthorizationParam'
       responses:
         '200':
           description: OK
           schema:
-            type: 'object'
+            type: object
             properties:
               status:
-                type: 'string'
-                example: 'success'
+                type: string
+                example: success
         '401':
           $ref: '#/responses/UnAuthorized'
   /users:
-    put:
+    patch:
       tags:
-      - 共通API
+        - 共通API
       summary: ユーザー情報編集
       parameters:
         - $ref: '#/parameters/AuthorizationParam'
@@ -77,27 +79,25 @@ paths:
           schema:
             $ref: '#/definitions/Unique'
         '401':
-           $ref: '#/responses/UnAuthorized'
-        
-      
-  /users/check_unique: 
-      post:
-        tags:
-          -  共通API
-        summary: ユニーク制約用API
-        parameters:
-          - $ref: '#/parameters/AuthorizationParam'
-        responses:
-          '200': 
-            description: OK
-            schema:
-             $ref: '#/definitions/Unique'
-          '422':
-            $ref: '#/responses/RecordInvalid'
+          $ref: '#/responses/UnAuthorized'
+  /users/check_unique:
+    post:
+      tags:
+        - 共通API
+      summary: ユニーク制約用API
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Unique'
+        '422':
+          $ref: '#/responses/RecordInvalid'
   /teachers/problems:
     get:
-      tags: 
-      - Teachers / Problems API
+      tags:
+        - Teachers / Problems API
       summary: 問題集一覧取得API
       parameters:
         - $ref: '#/parameters/AuthorizationParam'
@@ -105,30 +105,30 @@ paths:
         '200':
           description: OK
           schema:
-             $ref: '#/definitions/Problems'
+            $ref: '#/definitions/Problems'
         '401':
-          $ref: '#/responses/UnAuthorized'  
+          $ref: '#/responses/UnAuthorized'
     post:
-      tags: 
-      - Teachers / Problems API
+      tags:
+        - Teachers / Problems API
       summary: 問題集一覧取得API
       parameters:
         - $ref: '#/parameters/AuthorizationParam'
         - name: problem
           in: body
           schema:
-           $ref: '#/definitions/Problem'
+            $ref: '#/definitions/Problem'
       responses:
         '200':
           description: OK
           schema:
-             $ref: '#/definitions/Problems'
+            $ref: '#/definitions/Problems'
         '401':
-          $ref: '#/responses/UnAuthorized'  
+          $ref: '#/responses/UnAuthorized'
 parameters:
   AuthorizationParam:
     in: header
-    name: access-token
+    name: token
     description: 実行時に返ってくる値 or Cookie に入っている値
     type: string
     required: true
@@ -154,7 +154,7 @@ responses:
     schema:
       $ref: '#/definitions/Error'
   ServerError:
-    description: internal_server_error  
+    description: internal_server_error
     schema:
       $ref: '#/definitions/Error'
 definitions:
@@ -163,6 +163,9 @@ definitions:
     properties:
       access_token:
         type: string
+      exprired_at:
+        type: string
+        format: date-time
       user:
         type: object
         properties:
@@ -183,16 +186,15 @@ definitions:
       check_unique:
         type: boolean
         example: true
-  User: 
+  User:
     type: object
-    properties: 
-      login_id: 
+    properties:
+      login_id:
         type: string
       name:
         type: string
       school:
         type: string
-  
   Achievement:
     type: object
     properties:
@@ -208,12 +210,12 @@ definitions:
         type: integer
       answer_time:
         type: integer
-      created_at: 
+      created_at:
         type: string
-        example: '2018-01-01 00:00:00'
+        format: date-time
       updated_at:
         type: string
-        example: '2018-01-01 00:00:00'
+        format: date-time
   Problem:
     type: object
     properties:
@@ -223,12 +225,14 @@ definitions:
         type: string
       content:
         type: string
-      created_at: 
+      teacher_name:
         type: string
-        example: '2018-01-01 00:00:00'
+      created_at:
+        type: string
+        format: date-time
       updated_at:
         type: string
-        example: '2018-01-01 00:00:00'
+        format: date-time
   Achievements:
     type: array
     items:
@@ -237,4 +241,3 @@ definitions:
     type: array
     items:
       $ref: '#/definitions/Problem'
-        
