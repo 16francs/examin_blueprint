@@ -45,23 +45,6 @@ paths:
             $ref: '#/definitions/Auth'
         '401':
           $ref: '#/responses/UnAuthorized'
-    delete:
-      tags:
-        - 認証用API
-      summary: ログアウト用API
-      parameters:
-        - $ref: '#/parameters/AuthorizationParam'
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: object
-            properties:
-              status:
-                type: string
-                example: success
-        '401':
-          $ref: '#/responses/UnAuthorized'
   /users/check_unique:
     post:
       tags:
