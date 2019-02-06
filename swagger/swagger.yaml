@@ -112,6 +112,22 @@ paths:
         '401':
           $ref: '#/responses/UnAuthorized'
   /teachers/teachers:
+    get:
+      tags:
+        - Teachers / Teachers API
+      summary: 講師一覧取得API
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              teachers:
+                $ref: '#/definitions/TeachersTeachers'
+        '401':
+          $ref: '#/responses/UnAuthorized'
+          
     post:
       tags:
         - Teachers / Teachers API
@@ -131,7 +147,6 @@ paths:
           $ref: '#/responses/BadRequest'
         '401':
           $ref: '#/responses/UnAuthorized'
-        
 parameters:
   AuthorizationParam:
     in: header
@@ -139,7 +154,6 @@ parameters:
     description: 実行時に返ってくる値 or Cookie に入っている値
     type: string
     required: true
-
 responses:
   BadRequest:
     description: リクエスト情報が正しくない．
@@ -161,7 +175,6 @@ responses:
     description: サーバーエラー．
     schema:
       $ref: '#/definitions/Error'
-
 definitions:
   Auth:
     type: object
@@ -212,15 +225,21 @@ definitions:
     type: array
     items:
       $ref: '#/definitions/Problem'
-  User:
+  TeachersTeacher:
     type: object
     properties:
-      login_id:
-        type: string
+      id:
+        type: number
       name:
         type: string
       school:
         type: string
+      role:
+        type: number
+  TeachersTeachers:
+    type: array
+    items:
+      $ref: '#/definitions/TeachersTeacher'
   UserCreate:
     type: object
     properties:
@@ -234,29 +253,3 @@ definitions:
         type: string
       password_confirmation:
         type: string
-  Achievement:
-    type: object
-    properties:
-      id:
-        type: integer
-      problems_user_id:
-        type: integer
-      question_id:
-        type: integer
-      result:
-        type: boolean
-      user_choice:
-        type: integer
-      answer_time:
-        type: integer
-      created_at:
-        type: string
-        format: date-time
-      updated_at:
-        type: string
-        format: date-time
-  Achievements:
-    type: array
-    items:
-      $ref: '#/definitions/Achievement'
-
