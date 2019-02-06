@@ -84,7 +84,7 @@ paths:
         - $ref: '#/parameters/AuthorizationParam'
       responses:
         '200':
-          description: OK
+          description: 更新日時が新しい順
           schema:
             properties:
               problems:
