@@ -123,7 +123,7 @@ paths:
                       type: string
       responses:
         '200':
-          description: OK
+          $ref: '#/definitions/TeachersProblem'
         '400':
           $ref: '#/responses/BadRequest'
         '401':
@@ -271,10 +271,6 @@ definitions:
         type: string
       content:
         type: string
-      tags:
-        type: array
-        items:
-          type: string
       created_at:
         type: string
         format: date-time
@@ -304,6 +300,24 @@ definitions:
     type: array
     items:
       $ref: '#/definitions/Problem'
+  TeachersProblem:
+    type: object
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      content:
+        type: string
+      tags:
+        type: array
+        items:
+          type: string
+      teacher_name:
+        type: string
+      updated_at:
+        type: string
+        format: date-time
   TeachersProblems:
     type: array
     items:
