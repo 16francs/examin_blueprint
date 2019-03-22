@@ -56,7 +56,9 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/User'
+            properties:
+              user:
+                $ref: '#/definitions/User'
         '401':
           $ref: '#/responses/UnAuthorized'
   /users/check_unique:
@@ -268,7 +270,7 @@ definitions:
   Auth:
     type: object
     properties:
-      access_token:
+      token:
         type: string
       exprired_at:
         type: string
