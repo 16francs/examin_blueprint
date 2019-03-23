@@ -56,9 +56,7 @@ paths:
         '200':
           description: OK
           schema:
-            properties:
-              user:
-                $ref: '#/definitions/User'
+            $ref: '#/definitions/User'
         '401':
           $ref: '#/responses/UnAuthorized'
   /users/check_unique:
@@ -138,7 +136,7 @@ paths:
                     items:
                       type: string
       responses:
-        '200':
+        '201':
           $ref: '#/definitions/TeachersProblem'
         '400':
           $ref: '#/responses/BadRequest'
@@ -189,8 +187,8 @@ paths:
                   password_confirmation:
                     type: string
       responses:
-        '200':
-          description: OK
+        '201':
+          $ref: '#/definitions/User'
         '400':
           $ref: '#/responses/BadRequest'
         '401':
@@ -232,8 +230,8 @@ paths:
               password_confirmation:
                 type: string
       responses:
-        '200':
-          description: OK
+        '201':
+          $ref: '#/definitions/User'
         '400':
           $ref: '#/responses/BadRequest'
         '401':
@@ -350,6 +348,9 @@ definitions:
           type: string
       teacher_name:
         type: string
+      created_at:
+        type: string
+        format: date-time
       updated_at:
         type: string
         format: date-time
