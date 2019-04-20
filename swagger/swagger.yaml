@@ -4,8 +4,8 @@ info:
   version: 0.0.1
   title: examin
 schemes:
-  - https
-host: examin-api.herokuapp.com
+  - http
+host: localhost:3500
 basePath: /api
 produces:
   - application/json
@@ -82,7 +82,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/CheckUnique'
-  /students/problems/{problem_id}/achievement:
+  '/students/problems/{problem_id}/achievement':
     post:
       tags:
         - Students / Achievement API
@@ -128,7 +128,7 @@ paths:
                 $ref: '#/definitions/StudentsProblems'
         '401':
           $ref: '#/responses/UnAuthorized'
-  /students/problems/{problem_id}:
+  '/students/problems/{problem_id}':
     get:
       tags:
         - Students / Problems API
@@ -144,7 +144,6 @@ paths:
           $ref: '#/definitions/StudentsProblem'
         '401':
           $ref: '#/responses/UnAuthorized'
-
   /teachers/problems:
     get:
       tags:
@@ -189,7 +188,7 @@ paths:
           $ref: '#/responses/BadRequest'
         '401':
           $ref: '#/responses/UnAuthorized'
-  /teachers/problems/{problem_id}/questions:
+  '/teachers/problems/{problem_id}/questions':
     get:
       tags:
         - Teachers / Questions API
@@ -207,6 +206,34 @@ paths:
             properties:
               questions:
                 $ref: '#/definitions/TeachersQuestions'
+        '401':
+          $ref: '#/responses/UnAuthorized'
+    post:
+      tags:
+        - Teachers / Questions API
+      summary: 問題登録API
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+        - in: path
+          name: problem_id
+          type: integer
+          required: true
+        - in: body
+          name: question
+          schema:
+            properties:
+              question:
+                type: object
+                properties:
+                  sentence:
+                    type: string
+                  correct:
+                    type: string
+      responses:
+        '201':
+          $ref: '#/definitions/TeachersQuestion'
+        '400':
+          $ref: '#/responses/BadRequest'
         '401':
           $ref: '#/responses/UnAuthorized'
   /teachers/students:
@@ -466,6 +493,18 @@ definitions:
         updated_at:
           type: string
           format: date-time
+  TeachersQuestion:
+    type: object
+    properties:
+      id:
+        type: integer
+      problem_id:
+        type: integer
+      sentence:
+        type: string
+      correct:
+        type: string
+      
   TeachersQuestions:
     type: array
     items:
@@ -476,6 +515,12 @@ definitions:
           type: string
         correct:
           type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
   TeachersTeacher:
     type: object
     properties:
