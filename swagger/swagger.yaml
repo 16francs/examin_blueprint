@@ -59,6 +59,32 @@ paths:
             $ref: '#/definitions/User'
         '401':
           $ref: '#/responses/UnAuthorized'
+    patch:
+      tags:
+        - Users API
+      summary: ユーザー情報編集API
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+        - name: user
+          in: body
+          schema:
+            properties:
+              user:
+                type: object
+                properties:
+                  login_id:
+                    type: string
+                  name:
+                    type: string
+                  school:
+                    type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+        '401':
+          $ref: '#/responses/UnAuthorized'
   /users/check_unique:
     post:
       tags:
