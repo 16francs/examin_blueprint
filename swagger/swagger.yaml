@@ -257,12 +257,27 @@ paths:
                     type: string
       responses:
         '201':
-          $ref: '#/definitions/TeachersQuestion'
+          $ref: '#/definitions/Question'
         '400':
           $ref: '#/responses/BadRequest'
         '401':
           $ref: '#/responses/UnAuthorized'
   /teachers/students:
+    get:
+      tags:
+        - Teachers / Students API
+      summary: 生徒一覧取得API
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              students:
+                $ref: '#/definitions/TeachersStudents'
+        '401':
+          $ref: '#/responses/UnAuthorized'
     post:
       tags:
         - Teachers / Students API
@@ -281,10 +296,6 @@ paths:
                   name:
                     type: string
                   school:
-                    type: string
-                  password:
-                    type: string
-                  password_confirmation:
                     type: string
       responses:
         '201':
@@ -324,10 +335,6 @@ paths:
               name:
                 type: string
               school:
-                type: string
-              password:
-                type: string
-              password_confirmation:
                 type: string
       responses:
         '201':
@@ -403,6 +410,23 @@ definitions:
       title:
         type: string
       content:
+        type: string
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+  Question:
+    type: object
+    properties:
+      id:
+        type: integer
+      problem_id:
+        type: integer
+      sentence:
+        type: string
+      correct:
         type: string
       created_at:
         type: string
@@ -519,18 +543,6 @@ definitions:
         updated_at:
           type: string
           format: date-time
-  TeachersQuestion:
-    type: object
-    properties:
-      id:
-        type: integer
-      problem_id:
-        type: integer
-      sentence:
-        type: string
-      correct:
-        type: string
-      
   TeachersQuestions:
     type: array
     items:
@@ -547,18 +559,29 @@ definitions:
         updated_at:
           type: string
           format: date-time
-  TeachersTeacher:
-    type: object
-    properties:
-      id:
-        type: number
-      name:
-        type: string
-      school:
-        type: string
-      role:
-        type: number
+  TeachersStudents:
+    type: array
+    items:
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        school:
+          type: string
+        login_id:
+          type: string
   TeachersTeachers:
     type: array
     items:
-      $ref: '#/definitions/TeachersTeacher'
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        school:
+          type: string
+        login_id:
+          type: string
+        role:
+          type: number
