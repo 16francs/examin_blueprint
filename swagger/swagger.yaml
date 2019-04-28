@@ -330,12 +330,15 @@ paths:
           in: body
           schema:
             properties:
-              login_id:
-                type: string
-              name:
-                type: string
-              school:
-                type: string
+              teacher:
+                type: object
+                properties:
+                  login_id:
+                    type: string
+                  name:
+                    type: string
+                  school:
+                    type: string
       responses:
         '201':
           $ref: '#/definitions/User'
