@@ -262,6 +262,50 @@ paths:
           $ref: '#/responses/BadRequest'
         '401':
           $ref: '#/responses/UnAuthorized'
+  '/teachers/problems/download':
+    get:
+      tags:
+        - Teachers / Questions API
+      summary: 問題一括登録テンプレートダウンロードAPI
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+        - in: header
+          name: ResponseType
+          description: ダウンロードファイルの形式
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          $ref: '#/responses/UnAuthorized'
+  '/teachers/problems/{problem_id}/upload':
+    post:
+      tags:
+        - Teachers / Questions API
+      summary: 問題一括登録テンプレートアップロードAPI
+      parameters:
+        - $ref: '#/parameters/AuthorizationParam'
+        - in: path
+          name: problem_id
+          type: integer
+          required: true
+        - in: body
+          name: file
+          schema:
+            properties:
+              file:
+                type: object
+      responses:
+        '201':
+          description: OK
+          schema:
+            properties:
+              questions:
+                $ref: '#/definitions/TeachersQuestions'
+        '400':
+          $ref: '#/responses/BadRequest'
+        '401':
+          $ref: '#/responses/UnAuthorized'
   /teachers/students:
     get:
       tags:
